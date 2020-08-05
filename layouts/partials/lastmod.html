@@ -1,0 +1,8 @@
+{{/* Same date format as _default/single.html, better to be defined once. */}}
+{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2 2006" }}
+
+{{/* Display last modified date only when it's not the same day */}}
+{{ if ne (.Date.Format "Jan 2 2006") (.Lastmod.Format "Jan 2 2006") }}
+<time datetime="{{ .Lastmod }}" class="post__date"
+>- {{ .Lastmod.Format $dateFormat }}</time>
+{{ end }}

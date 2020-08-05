@@ -13,6 +13,7 @@
             {{ partial "translations.html" . }}
             <time datetime="{{ .Date }}" class="post__date"
             >{{ .Date.Format $dateFormat }}</time>
+            {{ partial "lastmod.html" . }}
           </header>
           <article class="post__content">
               {{ partial "anchored-headings.html" .Content }}
