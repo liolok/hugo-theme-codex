@@ -1,0 +1,5 @@
+{{ if .IsTranslated }}
+{{ range .Translations }}
+<div class="post__translation"><a href="{{ .Permalink }}">{{ .Title }}</a></div>
+{{ end }}
+{{ end }}

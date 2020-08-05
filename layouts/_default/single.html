@@ -9,7 +9,8 @@
       <div class="post__container">
         <div class="post">
           <header class="post__header">
-            <h1 id="post__title">{{.Title}}</h1>
+            <h1 id="post__title">{{ .Title }}</h1>
+            {{ partial "translations.html" . }}
             <time datetime="{{ .Date }}" class="post__date"
             >{{ .Date.Format $dateFormat }}</time>
           </header>
@@ -34,8 +35,8 @@
       </div>
       {{ end }}
     </div>
-    
-{{ end }} 
+
+{{ end }}
 
 {{ define "scripts" }}
   {{/* Hardcode a specific prismjs version to avoid a redirect on every page load. */}}
