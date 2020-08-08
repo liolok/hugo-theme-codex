@@ -4,6 +4,7 @@
     {{ range .Site.Menus.main }}
       <li>
         {{ $isActive := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+        {{ $isActive = or $isActive (eq $currentPage.RelPermalink .URL) }}
         <a {{ if $isActive }}class="active"{{ end }} href="{{ .URL }}">{{ .Name }}</a>
       </li>
     {{ end }}
