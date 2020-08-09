@@ -1,0 +1,22 @@
+{{ if .IsNode }}
+{{ $defaultCDN := "https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.0.0/quicklink.umd.js" }}
+<script src="{{ or .Params.cdn.quicklink $defaultCDN }}"></script>
+{{/* (https://github.com/GoogleChromeLabs/quicklink#custom-ignore-patterns)
+Same-origin restraint is enabled by default.
+This example will ignore all requests to:
+- all "/api/*" pathnames
+- all ".zip" extensions
+- all <a> tags with "noprefetch" attribute
+*/}}
+<script>
+  window.addEventListener('load', () => {
+    quicklink.listen({
+      ignores: [
+        /\/api\/?/,
+        uri => uri.includes('.zip'),
+        (uri, elem) => elem.hasAttribute('noprefetch')
+      ]
+    });
+  });
+</script>
+{{ end }}
