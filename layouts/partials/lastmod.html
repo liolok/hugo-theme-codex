@@ -3,6 +3,6 @@
 
 {{/* Display last modified date only when it's not the same day */}}
 {{ if ne (.Date.Format "Jan 2 2006") (.Lastmod.Format "Jan 2 2006") }}
-<time datetime="{{ .Lastmod }}" class="post__date"
->- {{ .Lastmod.Format $dateFormat }}</time>
+{{ if .Date }}<time class="post__date">-</time>{{ end }}
+<time datetime="{{ .Lastmod }}" class="post__date">{{ .Lastmod.Format $dateFormat }}</time>
 {{ end }}
